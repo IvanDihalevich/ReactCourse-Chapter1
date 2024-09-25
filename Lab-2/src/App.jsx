@@ -1,4 +1,4 @@
-import React from 'react'
+
 import PageTitle from './components/PageTitle.jsx'
 import ToDoListContainer from './components/ToDoListContainer.jsx'
 import './styles.css'

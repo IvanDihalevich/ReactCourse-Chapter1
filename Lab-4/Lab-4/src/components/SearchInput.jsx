@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 
-
 function SearchInput({ value, onChange }) {
   return (
     <input
