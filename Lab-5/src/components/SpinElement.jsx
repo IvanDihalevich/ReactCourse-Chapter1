@@ -1,9 +1,13 @@
-const SpinElement = () => {
+import SpinElement from "./SpinElement";
+
+// eslint-disable-next-line react/prop-types
+const Loading = ({ isLoading, children }) => {
   return (
-    <div className="loader center">
-      <i className="fa fa-cog fa-spin" />
-    </div>
+    <>
+      {isLoading && <SpinElement />}
+      {children}
+    </>
   );
 };
 
-export default SpinElement;
+export default Loading;
