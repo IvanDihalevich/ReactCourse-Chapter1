@@ -1,12 +1,11 @@
 /* styles.css */
 .container {
   width: 400px;
-  height: 400px;
   margin: 0 auto;
   padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   position: absolute;
   top: 50%;
@@ -14,6 +13,8 @@
   transform: translate(-50%, -50%);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
+  overflow-y: auto;
+  max-height: 80vh;
 }
 
 .heading {
@@ -24,6 +25,7 @@
 .form {
   display: flex;
   margin-bottom: 10px;
+  width: 100%;
 }
 
 .input {
@@ -63,6 +65,7 @@
   justify-content: space-between;
   padding: 8px;
   border-bottom: 1px solid #ccc;
+  word-wrap: break-word;
 }
 
 .deleteButton {
