@@ -1,4 +1,4 @@
-import SpinElement from "./SpinElement";
+import SpinElement from "../elements/SpinElement";
 
 // eslint-disable-next-line react/prop-types
 const Loading = ({ isLoading, children }) => {
