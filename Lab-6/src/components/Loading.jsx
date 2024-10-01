@@ -4,7 +4,8 @@ import SpinElement from "../elements/SpinElement";
 const Loading = ({ isLoading, children }) => {
   return (
     <>
-      {isLoading ? <SpinElement /> : children}
+      {isLoading && <SpinElement />}
+      {!isLoading && children}
     </>
   );
 };

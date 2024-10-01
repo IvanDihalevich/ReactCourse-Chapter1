@@ -3,6 +3,7 @@ import AddToDoForm from "./AddToDoForm.jsx";
 import ToDoList from "./ToDoList.jsx";
 import SearchInput from "./SearchInput.jsx";
 import useGetAllToDo from "../hooks/useGetAllToDo";
+import Loading from "./Loading";
 
 function ToDoListContainer() {
   const { isLoading, toDo: fetchedToDo, error } = useGetAllToDo();
@@ -37,11 +38,10 @@ function ToDoListContainer() {
     item.title.toLowerCase().includes(searchValue.toLowerCase())
   );
 
-  if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error loading data</p>;
 
   return (
-    <>
+    <Loading isLoading={isLoading}>
       <AddToDoForm
         title={title}
         handleInputChange={handleInputChange}
@@ -49,7 +49,7 @@ function ToDoListContainer() {
       />
       <SearchInput value={searchValue} onChange={handleSearchValueChange} />
       <ToDoList toDo={filteredToDo} handleDelete={handleDelete} />
-    </>
+    </Loading>
   );
 }
 

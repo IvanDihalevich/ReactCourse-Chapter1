@@ -18,12 +18,12 @@ function ToDoListContainer() {
       id: Date.now(),
       title: title,
     };
-    setToDo([...toDo, newToDo]);
+    setToDo((prevToDo) => [...prevToDo, newToDo]);
     setTitle("");
   };
 
   const handleDelete = (id) => {
-    setToDo(toDo.filter((item) => item.id !== id));
+    setToDo((prevToDo) => prevToDo.filter((item) => item.id !== id));
   };
 
   const handleInputChange = (e) => {
