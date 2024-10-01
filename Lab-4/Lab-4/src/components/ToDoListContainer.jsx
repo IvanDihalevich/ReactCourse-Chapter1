@@ -22,7 +22,7 @@ function ToDoListContainer() {
   };
 
   const handleDelete = (id) => {
-    setToDo(toDo.filter((item) => item.id !== id));
+    setToDo(fetchedToDo.filter((item) => item.id !== id));
   };
 
   const handleInputChange = (e) => {
