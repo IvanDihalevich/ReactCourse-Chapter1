@@ -1,22 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import AddToDoForm from "./AddToDoForm.jsx";
 import ToDoList from "./ToDoList.jsx";
 import SearchInput from "./SearchInput.jsx";
-import useFetch from "../hooks/useFetch";
+import useGetAllToDo from "../hooks/useGetAllToDo";
 import Loading from "./Loading";
 
 function ToDoListContainer() {
-  const { isLoading, data: fetchedToDo, error } = useFetch("https://jsonplaceholder.typicode.com/todos");
-
+  const { isLoading, toDo: fetchedToDo, error } = useGetAllToDo();
   const [toDo, setToDo] = useState([]);
   const [title, setTitle] = useState("");
   const [searchValue, setSearchValue] = useState("");
-
-  useEffect(() => {
-    if (fetchedToDo) {
-      setToDo(fetchedToDo.slice(0, 10));
-    }
-  }, [fetchedToDo]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -41,15 +34,17 @@ function ToDoListContainer() {
     setSearchValue(e.target.value);
   };
 
-  const filteredToDo = toDo.filter((item) =>
-    item.title.toLowerCase().includes(searchValue.toLowerCase())
-  );
-
   const handleEdit = (id, newTitle) => {
     setToDo((prevToDo) =>
-      prevToDo.map((item) => (item.id === id ? { ...item, title: newTitle } : item))
+      prevToDo.map((item) =>
+        item.id === id ? { ...item, title: newTitle } : item
+      )
     );
   };
+
+  const filteredToDo = [...fetchedToDo, ...toDo].filter((item) =>
+    item.title.toLowerCase().includes(searchValue.toLowerCase())
+  );
 
   if (error) return <p>Error loading data</p>;
 
@@ -61,7 +56,11 @@ function ToDoListContainer() {
         handleSubmit={handleSubmit}
       />
       <SearchInput value={searchValue} onChange={handleSearchValueChange} />
-      <ToDoList toDo={filteredToDo} handleDelete={handleDelete} handleEdit={handleEdit} />
+      <ToDoList
+        toDo={filteredToDo}
+        handleDelete={handleDelete}
+        handleEdit={handleEdit}
+      />
     </Loading>
   );
 }
