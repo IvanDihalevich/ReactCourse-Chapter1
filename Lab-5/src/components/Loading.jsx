@@ -5,7 +5,7 @@ const Loading = ({ isLoading, children }) => {
   return (
     <>
       {isLoading && <SpinElement />}
-      {!isLoading && children}
+      {children}
     </>
   );
 };

@@ -1,0 +1,136 @@
+body {
+  font-family: var(--font-family);
+  line-height: 1.5;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: var(--background-dark);
+  color: #fff;
+}
+
+#root {
+  width: 100%;
+  max-width: 800px;
+  padding: 20px;
+  background-color: #2d2d2d;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+form {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+form input {
+  flex: 1;
+  padding: 10px;
+  margin-right: 10px;
+  border: 1px solid #444;
+  border-radius: 5px;
+  background-color: #1a1a1a;
+  color: #fff;
+  font-size: 1em;
+}
+
+form input::placeholder {
+  color: #aaa;
+}
+
+form button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: var(--primary-color);
+  color: #fff;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form button:hover {
+  background-color: var(--hover-color);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table th,
+table td {
+  padding: 12px;
+  border-bottom: 1px solid #444;
+  color: #fff;
+}
+
+table th {
+  text-align: left;
+  background-color: #333;
+}
+
+table tr:nth-child(even) {
+  background-color: #2a2a2a;
+}
+
+table button {
+  padding: 6px 12px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  color: #fff;
+}
+
+table button:first-of-type {
+  background-color: #ffc107;
+}
+
+table button:first-of-type:hover {
+  background-color: #e0a800;
+}
+
+table button:last-of-type {
+  background-color: #dc3545;
+}
+
+table button:last-of-type:hover {
+  background-color: #c82333;
+}
+
+@media (max-width: 600px) {
+  form {
+    flex-direction: column;
+  }
+
+  form input {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  form button {
+    width: 100%;
+  }
+
+  table th,
+  table td {
+    padding: 10px;
+  }
+
+  #root {
+    padding: 10px;
+  }
+}

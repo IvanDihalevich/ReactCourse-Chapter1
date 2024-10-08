@@ -6,8 +6,8 @@ import useGetAllToDo from "../hooks/useGetAllToDo";
 import Loading from "./Loading";
 
 function ToDoListContainer() {
-  const { isLoading, toDo: fetchedToDo, error } = useGetAllToDo();
-  const [toDo, setToDo] = useState([]);
+  const { isLoading, toDo: fetchedToDo, error, setData:setToDo } = useGetAllToDo();
+
   const [title, setTitle] = useState("");
   const [searchValue, setSearchValue] = useState("");
 
@@ -18,7 +18,7 @@ function ToDoListContainer() {
       id: Date.now(),
       title: title,
     };
-    setToDo([...toDo, newToDo]);
+    setToDo([...fetchedToDo, newToDo]);
     setTitle("");
   };
 
@@ -34,7 +34,7 @@ function ToDoListContainer() {
     setSearchValue(e.target.value);
   };
 
-  const filteredToDo = [...fetchedToDo, ...toDo].filter((item) =>
+  const filteredToDo = fetchedToDo.filter((item) =>
     item.title.toLowerCase().includes(searchValue.toLowerCase())
   );
 
